@@ -1,0 +1,37 @@
+#1 Get selected items' information
+Inputs:
+  selectedItems: [String]
+  allItemsInfo:[{
+    id: String,
+    name: String,
+    price: Number
+  }]: loadAllItems()
+Output:
+  itemInfo: [{
+    id: String,
+    name: String,
+    price: Number
+  }]
+
+#2 Find the best charge
+Inputs:
+    itemInfo
+    promotion:[{
+      type: String
+      }, {
+      type: String,
+      items: [String]
+    }]: loadPromotions()
+Output:
+    best_Charge:{
+      totalPrice: Number,
+      promotionType: String,
+      saveMoney: Number
+    }
+
+#3 Print receipt
+Input:
+  itemInfo
+  best_Charge
+Output:
+  receipt: string: best-charge-spec.js, calculatePrice()

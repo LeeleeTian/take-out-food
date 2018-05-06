@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Take Out Food</title>
+
+    <link rel="stylesheet" href="./index.css" />
+
+    <script type="text/javascript" src="../src/items.js"></script>
+    <script type="text/javascript" src="../src/promotions.js"></script>
+    <script type="text/javascript" src="../src/best-charge.js"></script>
+    <script type="text/javascript" src="./index.js"></script>
+</head>
+<body>
+
+    <h1>“好多肉”在线点餐系统</h1>
+
+    <div id="items">
+        <!-- 把`loadAllItems()`中的菜品信息以动态加载的方式显示在这里，并且能够让用户输入数量 -->
+        <table border="1">
+          <thead>
+            <tr>
+              <td>ID</td>
+              <td>Item</td>
+              <td>Price</td>
+              <td>Amount</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="id1"></td>
+              <td id="item1"></td>
+              <td id="price1"></td>
+              <td>
+                <input id="amount1" type="number" name="amount" min="0">
+              </td>
+            </tr>
+            <tr>
+              <td id="id2"></td>
+              <td id="item2"></td>
+              <td id="price2"></td>
+              <td>
+                <input id="amount2" type="number" name="amount" min="0">
+              </td>
+            </tr>
+            <tr>
+              <td id="id3"></td>
+              <td id="item3"></td>
+              <td id="price3"></td>
+              <td>
+                <input id="amount3" type="number" name="amount" min="0">
+              </td>
+            </tr>
+            <tr>
+              <td id="id4"></td>
+              <td id="item4"></td>
+              <td id="price4"></td>
+              <td>
+                <input id="amount4" type="number" name="amount" min="0">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      <script type="text/javascript">
+        let allItems = loadAllItems();
+        for(let i = 1; i <= allItems.length; i++){
+          document.getElementById("id" + i).innerHTML = allItems[i-1].id;
+          document.getElementById("item" + i).innerHTML = allItems[i-1].name;
+          document.getElementById("price" + i).innerHTML = allItems[i-1].price;
+        }
+      </script>
+    </div>
+
+    <div id="promotions">
+        <!-- 把`loadPromotions()`中的优惠信息以动态加载的方式显示在这里，让用户看到即可 -->
+        <p>当前的优惠方式有:</p>
+        <ul>
+        <li id="promotion1"></li>
+        <li id="promotion2"></li>
+        </ul>
+
+        <script type="text/javascript">
+          let promotionInfo = loadPromotions();
+          document.getElementById("promotion1").innerHTML = promotionInfo[0].type;
+          document.getElementById("promotion2").innerHTML = promotionInfo[1].type
+          + ": " + promotionInfo[1].items[0] + ", " + promotionInfo[1].items[1];
+        </script>
+    </div>
+
+    <div>
+        <button onclick="calculatePrice()">结算</button>
+        <button onclick="clearInput()">清除</button>
+    </div>
+
+    <pre id="message"></pre>
+
+</body>
+</html>
