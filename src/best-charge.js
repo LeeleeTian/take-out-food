@@ -1,8 +1,7 @@
 function bestCharge(selectedItems) {
   var itemInfo = getItemInfo(selectedItems);
   var best_charge = findBestCharge(itemInfo);
-  var receipt = printReceipt(itemInfo, best_charge);
-  return receipt;
+  return printReceipt(itemInfo, best_charge);
 }
 
 function printReceipt(itemInfo,best_charge){
